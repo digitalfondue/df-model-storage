@@ -19,13 +19,13 @@ Load the 'dfModelStorage' module in your application. See example/index.html .
 
 ####Persist a single field (using the ngModel directive)
 
-```
+```html
 <input type="text" data-ng-model="testValue" data-df-model-storage>
 ```
 
 ####Persist a complex object
 
-```
+```html
 <form data-df-model-storage="baseModel">
   <p><input type="text" data-ng-model="baseModel.input1"></p>
   <p><input type="text" data-ng-model="baseModel.input2"></p>
@@ -36,13 +36,13 @@ Load the 'dfModelStorage' module in your application. See example/index.html .
 #####Prefix the persisted model
 As the name of the model will be the key of the serialized object, to avoid clashes you can prefix the model.
 
-```
+```html
 <input type="text" data-ng-model="prefixedTestValue" data-df-model-storage data-df-prefix="index">
 ```
 
 It's valid for the complex object example too:
 
-```
+```html
 <form data-df-model-storage="prefixedBaseModel" data-df-prefix="index">
   <p><input type="text" data-ng-model="prefixedBaseModel.input1"></p>
   <p><input type="text" data-ng-model="prefixedBaseModel.input2"></p>
