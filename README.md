@@ -12,7 +12,7 @@ Please note that some browsers (noticed with safari mobile) in private mode will
 
 ## Use/Examples:
 
-Load the 'dfModelStorage' module in your application. See example/index.html .
+Load the 'dfModelStorage' module in your application. See example/index.html or directly http://digitalfondue.github.io/df-model-storage/
 
 
 ###Persist a single field (using the ngModel directive)
