@@ -5,25 +5,23 @@ Persist models in the sessionStorage and restore them on page reload.
 
 Under MIT License.
 
-## Usage
-
-### Requirements
+## Requirements
 AngularJS and a browser that support sessionStorage. 
 Please note that some browsers (noticed with safari mobile) in private mode will disable the sessionStorage.
 
 
-### Use/Examples:
+## Use/Examples:
 
 Load the 'dfModelStorage' module in your application. See example/index.html .
 
 
-####Persist a single field (using the ngModel directive)
+###Persist a single field (using the ngModel directive)
 
 ```html
 <input type="text" data-ng-model="testValue" data-df-model-storage>
 ```
 
-####Persist a complex object
+###Persist a complex object
 
 ```html
 <form data-df-model-storage="baseModel">
@@ -33,7 +31,7 @@ Load the 'dfModelStorage' module in your application. See example/index.html .
 ```
 
 
-#####Prefix the persisted model
+####Prefix the persisted model
 As the name of the model will be the key of the serialized object, to avoid clashes you can prefix the model.
 
 ```html
