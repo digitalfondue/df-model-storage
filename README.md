@@ -1,7 +1,7 @@
 df-model-storage
 ================
 
-Persist models in the sessionStorage and restore them on page reload.
+Persist models in the sessionStorage and restore them on page reload (link time).
 
 Under MIT License.
 
@@ -31,7 +31,7 @@ Load the 'dfModelStorage' module in your application. See example/index.html or 
 ```
 
 
-####Prefix the persisted model
+###Prefix the persisted model
 As the name of the model will be the key of the serialized object, to avoid clashes you can prefix the model.
 
 ```html
