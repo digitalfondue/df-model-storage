@@ -1,0 +1,27 @@
+{
+  "name": "df-model-storage",
+  "version": "0.1.0",
+  "description": "Persist models in the sessionStorage and restore them on page reload (link time)",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "phantomjs": "~1.9",
+    "karma": ">=0.12",
+    "karma-junit-reporter": "~0.1",
+    "karma-phantomjs-launcher" : "~0.1.2",
+    "karma-jasmine": "~0.1",
+    "karma-commonjs": "0.0.6",
+    "grunt-karma": "~0.8.2"
+  },
+  "scripts": { "test": "grunt test" },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com:digitalfondue/df-model-storage.git"
+  },
+  "author": "digitalfondue",
+  "license": "MIT"
+}
