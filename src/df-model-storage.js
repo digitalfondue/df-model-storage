@@ -3,12 +3,14 @@
   'use strict';
   angular.module('dfModelStorage', []).directive('dfModelStorage', ['$window', '$parse', '$log',
     function($window, $parse, $log) {
+	
       var defaultConfig = {
         onNotSupported: angular.noop,
         onNoDataFound: angular.noop,
         onParseError: angular.noop,
         onSuccess: angular.identity
       };
+	  
       return {
         require: '?ngModel',
         restrict: 'A',
@@ -18,7 +20,7 @@
           var itemName = attrs.ngModel || attrs.dfModelStorage;
           var prefix = attrs.dfPrefix || "";
           
-          var config = angular.extend({}, defaultConfig, scope.dfConfig);
+          var config = angular.extend({}, defaultConfig, $parse(attrs.dfModelStorageConf)(scope));
           
           //we expect that the itemName is defined
           if(!angular.isString(itemName) || itemName.length < 1) {
@@ -32,10 +34,9 @@
           var item = $window.sessionStorage.getItem(sessionStorageKey);
           if(item) {
             try {
-              var value = angular.fromJson(item);
+              var value = item === 'undefined' ? undefined : angular.fromJson(item);
               $parse(itemName).assign(scope, config.onSuccess(value));
             } catch(e) {
-              //$log.debug('error while parsing/assigning value', e);
               config.onParseError(sessionStorageKey, e);
             }
           } else {

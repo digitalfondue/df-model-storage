@@ -1,0 +1,66 @@
+<!doctype html>
+<html data-ng-app="app">
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+  <script src="../src/df-model-storage.js"></script>
+  <script>
+    angular.module('app', ['dfModelStorage'])
+    .controller('VerboseController', function($scope, $window, $log) {
+    
+        $scope.dfConfig = {
+            onNotSupported: function(key) {
+                alert('Please turn off private browsing');
+            },
+            onNoDataFound: function(key) {
+                $log.error("Message from VerboseController: no stored data has been found for key", key);                
+            },
+            onParseError: function(key, e) {
+                $log.warn("Message from VerboseController: Something went wrong. Please try again later",e);
+            },
+            onSuccess: function(value) {
+                $log.debug('Message from VerboseController: successfully parsed:', value);
+                return value;
+            }
+        };
+        
+    }).controller('LowProfileController', function($scope, $window, $log) {
+                
+    });
+  </script>
+</head>
+
+<body>
+
+  <h1>You can define the following hooks</h1>
+  <pre>{
+	onNotSupported: function(key) {
+		alert('Please turn off private browsing');
+	},
+	onNoDataFound: function(key) {
+		$log.error("Message from VerboseController: no stored data has been found for key", key);                
+	},
+	onParseError: function(key, e) {
+		$log.warn("Message from VerboseController: Something went wrong. Please try again later",e);
+	},
+	onSuccess: function(value) {
+		$log.debug('Message from VerboseController: successfully parsed:', value);
+		return value;
+	}
+}
+  </pre>
+  
+  <p>Just add the attribute <code>data-df-model-storage-conf="nameOfVariableFromScope"</code>.
+
+  <h2>df-model-storage directive (with hooks)</h2>
+  <p data-ng-controller="VerboseController">
+    <input type="text" data-ng-model="testValue1" data-df-model-storage data-df-model-storage-conf="dfConfig">
+  </p>
+  
+  <h2>df-model-storage directive (without hooks)</h2>
+  <p data-ng-controller="LowProfileController">
+    <input type="text" data-ng-model="testValue2" data-df-model-storage>
+  </p>
+</body>
+
+</html>
