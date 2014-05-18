@@ -1,7 +1,7 @@
 {
   "author": "digitalfondue",
   "name": "df-model-storage",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Persist models in the sessionStorage and restore them on page reload (link time)",
   "homepage": "https://github.com/digitalfondue/df-model-storage",
   "repository": {
