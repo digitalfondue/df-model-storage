@@ -5,7 +5,25 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
   <script src="df-model-storage.js"></script>
   <script>
-    angular.module('app', ['dfModelStorage']);
+    angular.module('app', ['dfModelStorage']).controller('VerboseController', function($scope, $log) {
+    
+        $scope.dfConfig = {
+            onNotSupported: function(key) {
+                alert('Please turn off private browsing');
+            },
+            onNoDataFound: function(key) {
+                $log.error("Message from VerboseController: no stored data has been found for key", key);                
+            },
+            onParseError: function(key, e) {
+                $log.warn("Message from VerboseController: Something went wrong. Please try again later",e);
+            },
+            onSuccess: function(value) {
+                $log.debug('Message from VerboseController: successfully parsed:', value);
+                return value;
+            }
+        };
+        
+    })
   </script>
 </head>
 
@@ -72,6 +90,31 @@
   <h2>Implementation details and note</h2>
   <p>The key used for saving the values in the session storage is the name of the model. Beware of clashes. You can use the df-prefix attribute for prefixing the model.</p>
   <p>Set some value in the first input field and in the prefixed one, and then go to <a href="prefixed.html">prefixed.html</a> to check the difference.</p>
+  
+  
+  <h2>Hooks</h2>
+  <p>You can define the following hooks for handling any special cases</p>
+  <pre>{
+	onNotSupported: function(key) {
+		alert('Please turn off private browsing');
+	},
+	onNoDataFound: function(key) {
+		$log.error("Message from VerboseController: no stored data has been found for key", key);                
+	},
+	onParseError: function(key, e) {
+		$log.warn("Message from VerboseController: Something went wrong. Please try again later",e);
+	},
+	onSuccess: function(value) {
+		$log.debug('Message from VerboseController: successfully parsed:', value);
+		return value;
+	}
+}
+  </pre>
+  
+  <p>Just add the attribute <code>data-df-model-storage-conf="nameOfVariableFromScope"</code>.
+  <p data-ng-controller="VerboseController">
+    <input type="text" data-ng-model="testValueForVerboseCntrl" data-df-model-storage data-df-model-storage-conf="dfConfig">
+  </p>
 </body>
 
 </html>
