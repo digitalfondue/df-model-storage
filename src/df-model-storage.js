@@ -18,7 +18,7 @@
           var itemName = attrs.ngModel || attrs.dfModelStorage;
           var prefix = attrs.dfPrefix || "";
           
-          var config = angular.extend({}, scope.dfConfig, defaultConfig);
+          var config = angular.extend({}, defaultConfig, scope.dfConfig);
           
           //we expect that the itemName is defined
           if(!angular.isString(itemName) || itemName.length < 1) {
