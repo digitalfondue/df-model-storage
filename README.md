@@ -7,6 +7,12 @@ Persist models in the sessionStorage and restore them on page reload (link time)
 
 Under MIT License.
 
+## Download
+- Download directly the directive https://raw.githubusercontent.com/digitalfondue/df-model-storage/master/src/df-model-storage.js
+- Clone this repository
+- A release at: https://github.com/digitalfondue/df-model-storage/releases
+- With bower: `$ bower install df-model-storage`
+
 ## Requirements
 AngularJS and a browser that support sessionStorage. 
 Please note that some browsers (noticed with safari mobile) in private mode will disable the sessionStorage.
