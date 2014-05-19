@@ -1,7 +1,7 @@
 df-model-storage
 ================
 
-[![Build Status](travis-ci.org/digitalfondue/df-model-storage.png?branch=master)](travis-ci.org/digitalfondue/df-model-storage)
+[![Build Status](https://travis-ci.org/digitalfondue/df-model-storage.png?branch=master)](https://travis-ci.org/digitalfondue/df-model-storage)
 
 Persist models in the sessionStorage and restore them on page reload (link time).
 
