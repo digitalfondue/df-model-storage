@@ -51,4 +51,4 @@ It's valid for the complex object example too:
 
 ## TODO
 
-Add some kind of minimization/test/bower packaging.
+Add some kind of minimization.
