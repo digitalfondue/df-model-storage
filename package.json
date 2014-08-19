@@ -8,7 +8,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4.2",
+    "grunt": "~0.4.5",
     "phantomjs": "~1.9",
     "karma": ">=0.12",
     "karma-junit-reporter": "~0.1",
