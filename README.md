@@ -1,9 +1,17 @@
 df-model-storage
 ================
 
-Persist models in the sessionStorage and restore them on page reload (with hooks if you need to do some additional work, see the documentation).
+[![Build Status](https://travis-ci.org/digitalfondue/df-model-storage.png?branch=master)](https://travis-ci.org/digitalfondue/df-model-storage)
+
+Persist models in the sessionStorage and restore them on page reload (link time).
 
 Under MIT License.
+
+## Download
+- Download directly the directive https://raw.githubusercontent.com/digitalfondue/df-model-storage/master/src/df-model-storage.js
+- Clone this repository
+- A release at: https://github.com/digitalfondue/df-model-storage/releases
+- With bower: `$ bower install df-model-storage`
 
 ## Requirements
 AngularJS and a browser that support sessionStorage. 
@@ -49,4 +57,4 @@ It's valid for the complex object example too:
 
 ## TODO
 
-Add some kind of minimization/test.
+Add some kind of minimization.

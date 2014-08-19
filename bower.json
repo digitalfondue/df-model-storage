@@ -11,5 +11,18 @@
   "main": "./src/df-model-storage.js",
   "dependencies": {
     "angular": ">= 1.2.0"
-  }
+  },
+  "ignore" : [
+      ".gitignore",
+      ".travis.yml",
+      "bower.json",
+      "Gruntfile.js",
+      "LICENSE",
+      "package.json",
+      "README.md",
+      "test",
+      "node_modules",
+      "examples",
+      "config",
+      ".git"]
 }
