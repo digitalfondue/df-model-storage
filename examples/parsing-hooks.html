@@ -6,21 +6,22 @@
   <script src="../src/df-model-storage.js"></script>
   <script>
     angular.module('app', ['dfModelStorage'])
-    .controller('VerboseController', function($scope, $window, $log) {
+    .controller('VerboseController', function($scope, $window, $log, $timeout) {
     
         $scope.dfConfig = {
             onNotSupported: function(key) {
                 alert('Please turn off private browsing');
             },
             onNoDataFound: function(key) {
-                $log.error("Message from VerboseController: no stored data has been found for key", key);                
+                $log.error("Message from VerboseController: no stored data has been found for key", key);           
+				return $timeout(function() {return 'no data found :D'}, 0); //example with a promise
             },
             onParseError: function(key, e) {
                 $log.warn("Message from VerboseController: Something went wrong. Please try again later",e);
             },
             onSuccess: function(value) {
                 $log.debug('Message from VerboseController: successfully parsed:', value);
-                return value;
+                return $timeout(function() {return value}, 0); //example with a promise
             }
         };
         
@@ -32,20 +33,23 @@
 
 <body>
 
-  <h1>You can define the following hooks</h1>
+  <h1>You can define the following hooks:</h1>
+  <p>See the code source.</p>
   <pre>{
 	onNotSupported: function(key) {
 		alert('Please turn off private browsing');
 	},
 	onNoDataFound: function(key) {
-		$log.error("Message from VerboseController: no stored data has been found for key", key);                
+		$log.error("Message from VerboseController: no stored data has been found for key", key);           
+		return $timeout(function() {return 'no data found :D'}, 0); //example with a promise, you can return directly a value
 	},
 	onParseError: function(key, e) {
 		$log.warn("Message from VerboseController: Something went wrong. Please try again later",e);
 	},
-	onSuccess: function(value) {
+	onSuccess: function(value) { 
+		// you receive the value deserialized from the session storage, you must return the value or a promise. See the source code of this page.
 		$log.debug('Message from VerboseController: successfully parsed:', value);
-		return value;
+		return $timeout(function() {return value}, 0); //example with a promise
 	}
 }
   </pre>

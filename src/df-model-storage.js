@@ -1,8 +1,8 @@
 ;
 (function() {
   'use strict';
-  angular.module('dfModelStorage', []).directive('dfModelStorage', ['$window', '$parse', '$log',
-    function($window, $parse, $log) {
+  angular.module('dfModelStorage', []).directive('dfModelStorage', ['$window', '$parse', '$q', '$log',
+    function($window, $parse, $q ,$log) {
 	
       var defaultConfig = {
         onNotSupported: angular.noop,
@@ -33,14 +33,22 @@
           var sessionStorageKey = prefix + itemName;
           var item = $window.sessionStorage.getItem(sessionStorageKey);
           if(item) {
-            try {
-              var value = item === 'undefined' ? undefined : angular.fromJson(item);
-              $parse(itemName).assign(scope, config.onSuccess(value));
-            } catch(e) {
-              config.onParseError(sessionStorageKey, e);
-            }
+			var value = item === 'undefined' ? undefined : angular.fromJson(item)
+			$q.when(config.onSuccess(value)).then(function(val) {
+					$parse(itemName).assign(scope, val);
+				}, 
+				function(e) {
+					config.onParseError(sessionStorageKey, e);
+				}
+			);
           } else {
-            config.onNoDataFound(sessionStorageKey);
+            $q.when(config.onNoDataFound(sessionStorageKey)).then(function(val) {
+				if(val !== undefined) {
+					$parse(itemName).assign(scope, val);
+				}
+			}, function(e) {
+				config.onParseError(sessionStorageKey, e);
+			});
           }
           
           

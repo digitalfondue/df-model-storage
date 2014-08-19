@@ -1,7 +1,7 @@
 df-model-storage
 ================
 
-Persist models in the sessionStorage and restore them on page reload (link time).
+Persist models in the sessionStorage and restore them on page reload (with hooks if you need to do some additional work, see the documentation).
 
 Under MIT License.
 
@@ -49,4 +49,4 @@ It's valid for the complex object example too:
 
 ## TODO
 
-Add some kind of minimization/test/bower packaging.
+Add some kind of minimization/test.
